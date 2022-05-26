@@ -46,12 +46,25 @@
             this.Kingaku = new System.Data.DataColumn();
             this.Syukkabi = new System.Data.DataColumn();
             this.GyoNo = new System.Data.DataColumn();
+            this.JuchuReport2 = new System.Data.DataTable();
+            this.kaiPageGroup = new System.Data.DataColumn();
+            this.dataColumn1 = new System.Data.DataColumn();
+            this.dataColumn2 = new System.Data.DataColumn();
+            this.dataColumn3 = new System.Data.DataColumn();
+            this.dataColumn4 = new System.Data.DataColumn();
+            this.dataColumn5 = new System.Data.DataColumn();
+            this.dataColumn6 = new System.Data.DataColumn();
+            this.dataColumn7 = new System.Data.DataColumn();
+            this.dataColumn8 = new System.Data.DataColumn();
+            this.dataColumn9 = new System.Data.DataColumn();
+            this.dataColumn10 = new System.Data.DataColumn();
             this.flexReport = new C1.Win.FlexReport.C1FlexReport();
             this.tokuisakiName = new System.Windows.Forms.TextBox();
             this.juchuhyouTableAdapter = new Juchuhyou_study.JuchuhyouDataSetTableAdapters.JuchuhyouMainTableAdapter();
             this.juchuhyouDataSet = new Juchuhyou_study.JuchuhyouDataSet();
             ((System.ComponentModel.ISupportInitialize)(this.reportDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.JuchuReport)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.JuchuReport2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.juchuhyouDataSet)).BeginInit();
             this.SuspendLayout();
             // 
@@ -89,7 +102,8 @@
             // 
             this.reportDataSet.DataSetName = "dataSet";
             this.reportDataSet.Tables.AddRange(new System.Data.DataTable[] {
-            this.JuchuReport});
+            this.JuchuReport,
+            this.JuchuReport2});
             // 
             // JuchuReport
             // 
@@ -156,6 +170,66 @@
             // 
             this.GyoNo.ColumnName = "GyoNo";
             // 
+            // JuchuReport2
+            // 
+            this.JuchuReport2.Columns.AddRange(new System.Data.DataColumn[] {
+            this.kaiPageGroup,
+            this.dataColumn1,
+            this.dataColumn2,
+            this.dataColumn3,
+            this.dataColumn4,
+            this.dataColumn5,
+            this.dataColumn6,
+            this.dataColumn7,
+            this.dataColumn8,
+            this.dataColumn9,
+            this.dataColumn10});
+            this.JuchuReport2.TableName = "JuchuReport2";
+            // 
+            // kaiPageGroup
+            // 
+            this.kaiPageGroup.ColumnName = "kaiPageGroup";
+            // 
+            // dataColumn1
+            // 
+            this.dataColumn1.ColumnName = "GyoNo";
+            // 
+            // dataColumn2
+            // 
+            this.dataColumn2.ColumnName = "TokuiCode";
+            // 
+            // dataColumn3
+            // 
+            this.dataColumn3.ColumnName = "TokuiName";
+            // 
+            // dataColumn4
+            // 
+            this.dataColumn4.ColumnName = "NounyubasoCode";
+            // 
+            // dataColumn5
+            // 
+            this.dataColumn5.ColumnName = "Juchubi";
+            // 
+            // dataColumn6
+            // 
+            this.dataColumn6.ColumnName = "JuchuBango";
+            // 
+            // dataColumn7
+            // 
+            this.dataColumn7.ColumnName = "Hinban";
+            // 
+            // dataColumn8
+            // 
+            this.dataColumn8.ColumnName = "Suryo";
+            // 
+            // dataColumn9
+            // 
+            this.dataColumn9.ColumnName = "Nouki";
+            // 
+            // dataColumn10
+            // 
+            this.dataColumn10.ColumnName = "TokuisakiName";
+            // 
             // flexReport
             // 
             this.flexReport.ReportDefinition = resources.GetString("flexReport.ReportDefinition");
@@ -192,6 +266,7 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.reportDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.JuchuReport)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.JuchuReport2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.juchuhyouDataSet)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -220,6 +295,18 @@
         private JuchuhyouDataSetTableAdapters.JuchuhyouMainTableAdapter juchuhyouTableAdapter;
         private System.Data.DataColumn GyoNo;
         private JuchuhyouDataSet juchuhyouDataSet;
+        private System.Data.DataTable JuchuReport2;
+        private System.Data.DataColumn kaiPageGroup;
+        private System.Data.DataColumn dataColumn1;
+        private System.Data.DataColumn dataColumn2;
+        private System.Data.DataColumn dataColumn3;
+        private System.Data.DataColumn dataColumn4;
+        private System.Data.DataColumn dataColumn5;
+        private System.Data.DataColumn dataColumn6;
+        private System.Data.DataColumn dataColumn7;
+        private System.Data.DataColumn dataColumn8;
+        private System.Data.DataColumn dataColumn9;
+        private System.Data.DataColumn dataColumn10;
     }
 }
 
