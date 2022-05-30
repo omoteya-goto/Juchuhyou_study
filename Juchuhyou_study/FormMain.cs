@@ -148,8 +148,6 @@ namespace Juchuhyou_study
                     svDialog.DocumentSource = frReport;
                     svDialog.Show();
 
-
-
                 }
             }
         }
