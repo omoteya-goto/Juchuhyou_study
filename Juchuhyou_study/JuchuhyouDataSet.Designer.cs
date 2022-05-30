@@ -299,8 +299,6 @@ namespace Juchuhyou_study {
             
             private global::System.Data.DataColumn columnTanka;
             
-            private global::System.Data.DataColumn columnKingaku;
-            
             private global::System.Data.DataColumn columnSyukkabi;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -418,14 +416,6 @@ namespace Juchuhyou_study {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn KingakuColumn {
-                get {
-                    return this.columnKingaku;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn SyukkabiColumn {
                 get {
                     return this.columnSyukkabi;
@@ -469,7 +459,7 @@ namespace Juchuhyou_study {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public JuchuhyouMainRow AddJuchuhyouMainRow(int JuchuBango, System.DateTime Juchubi, System.DateTime Nouki, string TokuiCode, string TokuisakiName, string NounyusakiCode, string Hinban, string Hinmei, int Suryo, int Tanka, int Kingaku, System.DateTime Syukkabi) {
+            public JuchuhyouMainRow AddJuchuhyouMainRow(int JuchuBango, System.DateTime Juchubi, System.DateTime Nouki, string TokuiCode, string TokuisakiName, string NounyusakiCode, string Hinban, string Hinmei, int Suryo, int Tanka, System.DateTime Syukkabi) {
                 JuchuhyouMainRow rowJuchuhyouMainRow = ((JuchuhyouMainRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         JuchuBango,
@@ -482,7 +472,6 @@ namespace Juchuhyou_study {
                         Hinmei,
                         Suryo,
                         Tanka,
-                        Kingaku,
                         Syukkabi};
                 rowJuchuhyouMainRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowJuchuhyouMainRow);
@@ -523,7 +512,6 @@ namespace Juchuhyou_study {
                 this.columnHinmei = base.Columns["Hinmei"];
                 this.columnSuryo = base.Columns["Suryo"];
                 this.columnTanka = base.Columns["Tanka"];
-                this.columnKingaku = base.Columns["Kingaku"];
                 this.columnSyukkabi = base.Columns["Syukkabi"];
             }
             
@@ -550,8 +538,6 @@ namespace Juchuhyou_study {
                 base.Columns.Add(this.columnSuryo);
                 this.columnTanka = new global::System.Data.DataColumn("Tanka", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnTanka);
-                this.columnKingaku = new global::System.Data.DataColumn("Kingaku", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnKingaku);
                 this.columnSyukkabi = new global::System.Data.DataColumn("Syukkabi", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnSyukkabi);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
@@ -856,22 +842,6 @@ namespace Juchuhyou_study {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public int Kingaku {
-                get {
-                    try {
-                        return ((int)(this[this.tableJuchuhyouMain.KingakuColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("テーブル \'JuchuhyouMain\' にある列 \'Kingaku\' の値は DBNull です。", e);
-                    }
-                }
-                set {
-                    this[this.tableJuchuhyouMain.KingakuColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public System.DateTime Syukkabi {
                 get {
                     try {
@@ -980,18 +950,6 @@ namespace Juchuhyou_study {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetTankaNull() {
                 this[this.tableJuchuhyouMain.TankaColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsKingakuNull() {
-                return this.IsNull(this.tableJuchuhyouMain.KingakuColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetKingakuNull() {
-                this[this.tableJuchuhyouMain.KingakuColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1176,12 +1134,11 @@ namespace Juchuhyou_study.JuchuhyouDataSetTableAdapters {
             tableMapping.ColumnMappings.Add("Hinmei", "Hinmei");
             tableMapping.ColumnMappings.Add("Suryo", "Suryo");
             tableMapping.ColumnMappings.Add("Tanka", "Tanka");
-            tableMapping.ColumnMappings.Add("Kingaku", "Kingaku");
             tableMapping.ColumnMappings.Add("Syukkabi", "Syukkabi");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[JuchuhyouMain] WHERE (([JuchuBango] = @Original_JuchuBango) AND ((@IsNull_Juchubi = 1 AND [Juchubi] IS NULL) OR ([Juchubi] = @Original_Juchubi)) AND ((@IsNull_Nouki = 1 AND [Nouki] IS NULL) OR ([Nouki] = @Original_Nouki)) AND ((@IsNull_TokuiCode = 1 AND [TokuiCode] IS NULL) OR ([TokuiCode] = @Original_TokuiCode)) AND ((@IsNull_TokuisakiName = 1 AND [TokuisakiName] IS NULL) OR ([TokuisakiName] = @Original_TokuisakiName)) AND ((@IsNull_NounyusakiCode = 1 AND [NounyusakiCode] IS NULL) OR ([NounyusakiCode] = @Original_NounyusakiCode)) AND ([Hinban] = @Original_Hinban) AND ((@IsNull_Hinmei = 1 AND [Hinmei] IS NULL) OR ([Hinmei] = @Original_Hinmei)) AND ((@IsNull_Suryo = 1 AND [Suryo] IS NULL) OR ([Suryo] = @Original_Suryo)) AND ((@IsNull_Tanka = 1 AND [Tanka] IS NULL) OR ([Tanka] = @Original_Tanka)) AND ((@IsNull_Kingaku = 1 AND [Kingaku] IS NULL) OR ([Kingaku] = @Original_Kingaku)) AND ((@IsNull_Syukkabi = 1 AND [Syukkabi] IS NULL) OR ([Syukkabi] = @Original_Syukkabi)))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[JuchuhyouMain] WHERE (([JuchuBango] = @Original_JuchuBango) AND ((@IsNull_Juchubi = 1 AND [Juchubi] IS NULL) OR ([Juchubi] = @Original_Juchubi)) AND ((@IsNull_Nouki = 1 AND [Nouki] IS NULL) OR ([Nouki] = @Original_Nouki)) AND ((@IsNull_TokuiCode = 1 AND [TokuiCode] IS NULL) OR ([TokuiCode] = @Original_TokuiCode)) AND ((@IsNull_TokuisakiName = 1 AND [TokuisakiName] IS NULL) OR ([TokuisakiName] = @Original_TokuisakiName)) AND ((@IsNull_NounyusakiCode = 1 AND [NounyusakiCode] IS NULL) OR ([NounyusakiCode] = @Original_NounyusakiCode)) AND ([Hinban] = @Original_Hinban) AND ((@IsNull_Hinmei = 1 AND [Hinmei] IS NULL) OR ([Hinmei] = @Original_Hinmei)) AND ((@IsNull_Suryo = 1 AND [Suryo] IS NULL) OR ([Suryo] = @Original_Suryo)) AND ((@IsNull_Tanka = 1 AND [Tanka] IS NULL) OR ([Tanka] = @Original_Tanka)) AND ((@IsNull_Syukkabi = 1 AND [Syukkabi] IS NULL) OR ([Syukkabi] = @Original_Syukkabi)))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_JuchuBango", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "JuchuBango", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Juchubi", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Juchubi", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
@@ -1201,14 +1158,12 @@ namespace Juchuhyou_study.JuchuhyouDataSetTableAdapters {
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Suryo", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Suryo", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Tanka", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Tanka", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Tanka", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Tanka", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Kingaku", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Kingaku", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Kingaku", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Kingaku", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Syukkabi", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Syukkabi", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Syukkabi", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Syukkabi", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[JuchuhyouMain] ([JuchuBango], [Juchubi], [Nouki], [TokuiCode], [TokuisakiName], [NounyusakiCode], [Hinban], [Hinmei], [Suryo], [Tanka], [Kingaku], [Syukkabi]) VALUES (@JuchuBango, @Juchubi, @Nouki, @TokuiCode, @TokuisakiName, @NounyusakiCode, @Hinban, @Hinmei, @Suryo, @Tanka, @Kingaku, @Syukkabi);
-SELECT JuchuBango, Juchubi, Nouki, TokuiCode, TokuisakiName, NounyusakiCode, Hinban, Hinmei, Suryo, Tanka, Kingaku, Syukkabi FROM JuchuhyouMain WHERE (JuchuBango = @JuchuBango)";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[JuchuhyouMain] ([JuchuBango], [Juchubi], [Nouki], [TokuiCode], [TokuisakiName], [NounyusakiCode], [Hinban], [Hinmei], [Suryo], [Tanka], [Syukkabi]) VALUES (@JuchuBango, @Juchubi, @Nouki, @TokuiCode, @TokuisakiName, @NounyusakiCode, @Hinban, @Hinmei, @Suryo, @Tanka, @Syukkabi);
+SELECT JuchuBango, Juchubi, Nouki, TokuiCode, TokuisakiName, NounyusakiCode, Hinban, Hinmei, Suryo, Tanka, Syukkabi FROM JuchuhyouMain WHERE (JuchuBango = @JuchuBango)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@JuchuBango", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "JuchuBango", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Juchubi", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Juchubi", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -1220,12 +1175,11 @@ SELECT JuchuBango, Juchubi, Nouki, TokuiCode, TokuisakiName, NounyusakiCode, Hin
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Hinmei", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Hinmei", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Suryo", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Suryo", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Tanka", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Tanka", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Kingaku", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Kingaku", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Syukkabi", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Syukkabi", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[JuchuhyouMain] SET [JuchuBango] = @JuchuBango, [Juchubi] = @Juchubi, [Nouki] = @Nouki, [TokuiCode] = @TokuiCode, [TokuisakiName] = @TokuisakiName, [NounyusakiCode] = @NounyusakiCode, [Hinban] = @Hinban, [Hinmei] = @Hinmei, [Suryo] = @Suryo, [Tanka] = @Tanka, [Kingaku] = @Kingaku, [Syukkabi] = @Syukkabi WHERE (([JuchuBango] = @Original_JuchuBango) AND ((@IsNull_Juchubi = 1 AND [Juchubi] IS NULL) OR ([Juchubi] = @Original_Juchubi)) AND ((@IsNull_Nouki = 1 AND [Nouki] IS NULL) OR ([Nouki] = @Original_Nouki)) AND ((@IsNull_TokuiCode = 1 AND [TokuiCode] IS NULL) OR ([TokuiCode] = @Original_TokuiCode)) AND ((@IsNull_TokuisakiName = 1 AND [TokuisakiName] IS NULL) OR ([TokuisakiName] = @Original_TokuisakiName)) AND ((@IsNull_NounyusakiCode = 1 AND [NounyusakiCode] IS NULL) OR ([NounyusakiCode] = @Original_NounyusakiCode)) AND ([Hinban] = @Original_Hinban) AND ((@IsNull_Hinmei = 1 AND [Hinmei] IS NULL) OR ([Hinmei] = @Original_Hinmei)) AND ((@IsNull_Suryo = 1 AND [Suryo] IS NULL) OR ([Suryo] = @Original_Suryo)) AND ((@IsNull_Tanka = 1 AND [Tanka] IS NULL) OR ([Tanka] = @Original_Tanka)) AND ((@IsNull_Kingaku = 1 AND [Kingaku] IS NULL) OR ([Kingaku] = @Original_Kingaku)) AND ((@IsNull_Syukkabi = 1 AND [Syukkabi] IS NULL) OR ([Syukkabi] = @Original_Syukkabi)));
-SELECT JuchuBango, Juchubi, Nouki, TokuiCode, TokuisakiName, NounyusakiCode, Hinban, Hinmei, Suryo, Tanka, Kingaku, Syukkabi FROM JuchuhyouMain WHERE (JuchuBango = @JuchuBango)";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[JuchuhyouMain] SET [JuchuBango] = @JuchuBango, [Juchubi] = @Juchubi, [Nouki] = @Nouki, [TokuiCode] = @TokuiCode, [TokuisakiName] = @TokuisakiName, [NounyusakiCode] = @NounyusakiCode, [Hinban] = @Hinban, [Hinmei] = @Hinmei, [Suryo] = @Suryo, [Tanka] = @Tanka, [Syukkabi] = @Syukkabi WHERE (([JuchuBango] = @Original_JuchuBango) AND ((@IsNull_Juchubi = 1 AND [Juchubi] IS NULL) OR ([Juchubi] = @Original_Juchubi)) AND ((@IsNull_Nouki = 1 AND [Nouki] IS NULL) OR ([Nouki] = @Original_Nouki)) AND ((@IsNull_TokuiCode = 1 AND [TokuiCode] IS NULL) OR ([TokuiCode] = @Original_TokuiCode)) AND ((@IsNull_TokuisakiName = 1 AND [TokuisakiName] IS NULL) OR ([TokuisakiName] = @Original_TokuisakiName)) AND ((@IsNull_NounyusakiCode = 1 AND [NounyusakiCode] IS NULL) OR ([NounyusakiCode] = @Original_NounyusakiCode)) AND ([Hinban] = @Original_Hinban) AND ((@IsNull_Hinmei = 1 AND [Hinmei] IS NULL) OR ([Hinmei] = @Original_Hinmei)) AND ((@IsNull_Suryo = 1 AND [Suryo] IS NULL) OR ([Suryo] = @Original_Suryo)) AND ((@IsNull_Tanka = 1 AND [Tanka] IS NULL) OR ([Tanka] = @Original_Tanka)) AND ((@IsNull_Syukkabi = 1 AND [Syukkabi] IS NULL) OR ([Syukkabi] = @Original_Syukkabi)));
+SELECT JuchuBango, Juchubi, Nouki, TokuiCode, TokuisakiName, NounyusakiCode, Hinban, Hinmei, Suryo, Tanka, Syukkabi FROM JuchuhyouMain WHERE (JuchuBango = @JuchuBango)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@JuchuBango", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "JuchuBango", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Juchubi", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Juchubi", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -1237,7 +1191,6 @@ SELECT JuchuBango, Juchubi, Nouki, TokuiCode, TokuisakiName, NounyusakiCode, Hin
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Hinmei", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Hinmei", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Suryo", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Suryo", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Tanka", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Tanka", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Kingaku", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Kingaku", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Syukkabi", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Syukkabi", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_JuchuBango", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "JuchuBango", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Juchubi", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Juchubi", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
@@ -1257,8 +1210,6 @@ SELECT JuchuBango, Juchubi, Nouki, TokuiCode, TokuisakiName, NounyusakiCode, Hin
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Suryo", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Suryo", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Tanka", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Tanka", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Tanka", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Tanka", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Kingaku", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Kingaku", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Kingaku", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Kingaku", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Syukkabi", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Syukkabi", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Syukkabi", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Syukkabi", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
         }
@@ -1278,7 +1229,7 @@ SELECT JuchuBango, Juchubi, Nouki, TokuiCode, TokuisakiName, NounyusakiCode, Hin
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT JuchuBango, Juchubi, Nouki, TokuiCode, TokuisakiName, NounyusakiCode, Hinb" +
-                "an, Hinmei, Suryo, Tanka, Kingaku, Syukkabi FROM dbo.JuchuhyouMain";
+                "an, Hinmei, Suryo, Tanka, Syukkabi FROM dbo.JuchuhyouMain";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -1339,7 +1290,7 @@ SELECT JuchuBango, Juchubi, Nouki, TokuiCode, TokuisakiName, NounyusakiCode, Hin
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_JuchuBango, global::System.Nullable<global::System.DateTime> Original_Juchubi, global::System.Nullable<global::System.DateTime> Original_Nouki, string Original_TokuiCode, string Original_TokuisakiName, string Original_NounyusakiCode, string Original_Hinban, string Original_Hinmei, global::System.Nullable<int> Original_Suryo, global::System.Nullable<int> Original_Tanka, global::System.Nullable<int> Original_Kingaku, global::System.Nullable<global::System.DateTime> Original_Syukkabi) {
+        public virtual int Delete(int Original_JuchuBango, global::System.Nullable<global::System.DateTime> Original_Juchubi, global::System.Nullable<global::System.DateTime> Original_Nouki, string Original_TokuiCode, string Original_TokuisakiName, string Original_NounyusakiCode, string Original_Hinban, string Original_Hinmei, global::System.Nullable<int> Original_Suryo, global::System.Nullable<int> Original_Tanka, global::System.Nullable<global::System.DateTime> Original_Syukkabi) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_JuchuBango));
             if ((Original_Juchubi.HasValue == true)) {
                 this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(0));
@@ -1411,21 +1362,13 @@ SELECT JuchuBango, Juchubi, Nouki, TokuiCode, TokuisakiName, NounyusakiCode, Hin
                 this.Adapter.DeleteCommand.Parameters[16].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[17].Value = global::System.DBNull.Value;
             }
-            if ((Original_Kingaku.HasValue == true)) {
+            if ((Original_Syukkabi.HasValue == true)) {
                 this.Adapter.DeleteCommand.Parameters[18].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[19].Value = ((int)(Original_Kingaku.Value));
+                this.Adapter.DeleteCommand.Parameters[19].Value = ((System.DateTime)(Original_Syukkabi.Value));
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[18].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[19].Value = global::System.DBNull.Value;
-            }
-            if ((Original_Syukkabi.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[20].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[21].Value = ((System.DateTime)(Original_Syukkabi.Value));
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[20].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[21].Value = global::System.DBNull.Value;
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -1447,7 +1390,7 @@ SELECT JuchuBango, Juchubi, Nouki, TokuiCode, TokuisakiName, NounyusakiCode, Hin
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(int JuchuBango, global::System.Nullable<global::System.DateTime> Juchubi, global::System.Nullable<global::System.DateTime> Nouki, string TokuiCode, string TokuisakiName, string NounyusakiCode, string Hinban, string Hinmei, global::System.Nullable<int> Suryo, global::System.Nullable<int> Tanka, global::System.Nullable<int> Kingaku, global::System.Nullable<global::System.DateTime> Syukkabi) {
+        public virtual int Insert(int JuchuBango, global::System.Nullable<global::System.DateTime> Juchubi, global::System.Nullable<global::System.DateTime> Nouki, string TokuiCode, string TokuisakiName, string NounyusakiCode, string Hinban, string Hinmei, global::System.Nullable<int> Suryo, global::System.Nullable<int> Tanka, global::System.Nullable<global::System.DateTime> Syukkabi) {
             this.Adapter.InsertCommand.Parameters[0].Value = ((int)(JuchuBango));
             if ((Juchubi.HasValue == true)) {
                 this.Adapter.InsertCommand.Parameters[1].Value = ((System.DateTime)(Juchubi.Value));
@@ -1503,17 +1446,11 @@ SELECT JuchuBango, Juchubi, Nouki, TokuiCode, TokuisakiName, NounyusakiCode, Hin
             else {
                 this.Adapter.InsertCommand.Parameters[9].Value = global::System.DBNull.Value;
             }
-            if ((Kingaku.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[10].Value = ((int)(Kingaku.Value));
+            if ((Syukkabi.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[10].Value = ((System.DateTime)(Syukkabi.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[10].Value = global::System.DBNull.Value;
-            }
-            if ((Syukkabi.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[11].Value = ((System.DateTime)(Syukkabi.Value));
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[11].Value = global::System.DBNull.Value;
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -1546,7 +1483,6 @@ SELECT JuchuBango, Juchubi, Nouki, TokuiCode, TokuisakiName, NounyusakiCode, Hin
                     string Hinmei, 
                     global::System.Nullable<int> Suryo, 
                     global::System.Nullable<int> Tanka, 
-                    global::System.Nullable<int> Kingaku, 
                     global::System.Nullable<global::System.DateTime> Syukkabi, 
                     int Original_JuchuBango, 
                     global::System.Nullable<global::System.DateTime> Original_Juchubi, 
@@ -1558,7 +1494,6 @@ SELECT JuchuBango, Juchubi, Nouki, TokuiCode, TokuisakiName, NounyusakiCode, Hin
                     string Original_Hinmei, 
                     global::System.Nullable<int> Original_Suryo, 
                     global::System.Nullable<int> Original_Tanka, 
-                    global::System.Nullable<int> Original_Kingaku, 
                     global::System.Nullable<global::System.DateTime> Original_Syukkabi) {
             this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(JuchuBango));
             if ((Juchubi.HasValue == true)) {
@@ -1615,104 +1550,90 @@ SELECT JuchuBango, Juchubi, Nouki, TokuiCode, TokuisakiName, NounyusakiCode, Hin
             else {
                 this.Adapter.UpdateCommand.Parameters[9].Value = global::System.DBNull.Value;
             }
-            if ((Kingaku.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[10].Value = ((int)(Kingaku.Value));
+            if ((Syukkabi.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[10].Value = ((System.DateTime)(Syukkabi.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[10].Value = global::System.DBNull.Value;
             }
-            if ((Syukkabi.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[11].Value = ((System.DateTime)(Syukkabi.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[11].Value = global::System.DBNull.Value;
-            }
-            this.Adapter.UpdateCommand.Parameters[12].Value = ((int)(Original_JuchuBango));
+            this.Adapter.UpdateCommand.Parameters[11].Value = ((int)(Original_JuchuBango));
             if ((Original_Juchubi.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[13].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[14].Value = ((System.DateTime)(Original_Juchubi.Value));
+                this.Adapter.UpdateCommand.Parameters[12].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[13].Value = ((System.DateTime)(Original_Juchubi.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[13].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[14].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[12].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[13].Value = global::System.DBNull.Value;
             }
             if ((Original_Nouki.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[15].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[16].Value = ((System.DateTime)(Original_Nouki.Value));
+                this.Adapter.UpdateCommand.Parameters[14].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[15].Value = ((System.DateTime)(Original_Nouki.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[15].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[16].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[14].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[15].Value = global::System.DBNull.Value;
             }
             if ((Original_TokuiCode == null)) {
-                this.Adapter.UpdateCommand.Parameters[17].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[18].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[16].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[17].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[17].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[18].Value = ((string)(Original_TokuiCode));
+                this.Adapter.UpdateCommand.Parameters[16].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[17].Value = ((string)(Original_TokuiCode));
             }
             if ((Original_TokuisakiName == null)) {
-                this.Adapter.UpdateCommand.Parameters[19].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[20].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[18].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[19].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[19].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[20].Value = ((string)(Original_TokuisakiName));
+                this.Adapter.UpdateCommand.Parameters[18].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[19].Value = ((string)(Original_TokuisakiName));
             }
             if ((Original_NounyusakiCode == null)) {
-                this.Adapter.UpdateCommand.Parameters[21].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[22].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[20].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[21].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[21].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[22].Value = ((string)(Original_NounyusakiCode));
+                this.Adapter.UpdateCommand.Parameters[20].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[21].Value = ((string)(Original_NounyusakiCode));
             }
             if ((Original_Hinban == null)) {
                 throw new global::System.ArgumentNullException("Original_Hinban");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[23].Value = ((string)(Original_Hinban));
+                this.Adapter.UpdateCommand.Parameters[22].Value = ((string)(Original_Hinban));
             }
             if ((Original_Hinmei == null)) {
-                this.Adapter.UpdateCommand.Parameters[24].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[25].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[23].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[24].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[24].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[25].Value = ((string)(Original_Hinmei));
+                this.Adapter.UpdateCommand.Parameters[23].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[24].Value = ((string)(Original_Hinmei));
             }
             if ((Original_Suryo.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[26].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[27].Value = ((int)(Original_Suryo.Value));
+                this.Adapter.UpdateCommand.Parameters[25].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[26].Value = ((int)(Original_Suryo.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[26].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[27].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[25].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[26].Value = global::System.DBNull.Value;
             }
             if ((Original_Tanka.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[28].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[29].Value = ((int)(Original_Tanka.Value));
+                this.Adapter.UpdateCommand.Parameters[27].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[28].Value = ((int)(Original_Tanka.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[28].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[29].Value = global::System.DBNull.Value;
-            }
-            if ((Original_Kingaku.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[30].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[31].Value = ((int)(Original_Kingaku.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[30].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[31].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[27].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[28].Value = global::System.DBNull.Value;
             }
             if ((Original_Syukkabi.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[32].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[33].Value = ((System.DateTime)(Original_Syukkabi.Value));
+                this.Adapter.UpdateCommand.Parameters[29].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[30].Value = ((System.DateTime)(Original_Syukkabi.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[32].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[33].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[29].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[30].Value = global::System.DBNull.Value;
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -1744,7 +1665,6 @@ SELECT JuchuBango, Juchubi, Nouki, TokuiCode, TokuisakiName, NounyusakiCode, Hin
                     string Hinmei, 
                     global::System.Nullable<int> Suryo, 
                     global::System.Nullable<int> Tanka, 
-                    global::System.Nullable<int> Kingaku, 
                     global::System.Nullable<global::System.DateTime> Syukkabi, 
                     int Original_JuchuBango, 
                     global::System.Nullable<global::System.DateTime> Original_Juchubi, 
@@ -1756,9 +1676,8 @@ SELECT JuchuBango, Juchubi, Nouki, TokuiCode, TokuisakiName, NounyusakiCode, Hin
                     string Original_Hinmei, 
                     global::System.Nullable<int> Original_Suryo, 
                     global::System.Nullable<int> Original_Tanka, 
-                    global::System.Nullable<int> Original_Kingaku, 
                     global::System.Nullable<global::System.DateTime> Original_Syukkabi) {
-            return this.Update(Original_JuchuBango, Juchubi, Nouki, TokuiCode, TokuisakiName, NounyusakiCode, Hinban, Hinmei, Suryo, Tanka, Kingaku, Syukkabi, Original_JuchuBango, Original_Juchubi, Original_Nouki, Original_TokuiCode, Original_TokuisakiName, Original_NounyusakiCode, Original_Hinban, Original_Hinmei, Original_Suryo, Original_Tanka, Original_Kingaku, Original_Syukkabi);
+            return this.Update(Original_JuchuBango, Juchubi, Nouki, TokuiCode, TokuisakiName, NounyusakiCode, Hinban, Hinmei, Suryo, Tanka, Syukkabi, Original_JuchuBango, Original_Juchubi, Original_Nouki, Original_TokuiCode, Original_TokuisakiName, Original_NounyusakiCode, Original_Hinban, Original_Hinmei, Original_Suryo, Original_Tanka, Original_Syukkabi);
         }
     }
     

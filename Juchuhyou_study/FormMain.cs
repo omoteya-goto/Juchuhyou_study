@@ -38,7 +38,14 @@ namespace Juchuhyou_study
             if (dBConnect(ref connection) == true)
             {
                 //SQL文
-                string strSql = "SELECT * FROM JuchuhyouMain where TokuisakiName = @tokuisakiName";
+                string strSql = "SELECT * FROM JuchuhyouMain ";
+
+                if(strTokuisakiName != "")
+                {
+                    strSql = "where TokuisakiName = @tokuisakiName";
+                }
+
+                    strSql = strSql + "ORDER BY JuchuBango ASC";
 
                 try
                 {
@@ -96,14 +103,15 @@ namespace Juchuhyou_study
                         dataRow["TokuiCode"] = stringReturn(juchuhyouDataSet.JuchuhyouMain[intRow]["TokuiCode"]);
                         dataRow["TokuiName"] = stringReturn(juchuhyouDataSet.JuchuhyouMain[intRow]["TokuisakiName"]);
                         dataRow["NounyubasoCode"] = stringReturn(juchuhyouDataSet.JuchuhyouMain[intRow]["NounyusakiCode"]);
-
-                        dataRow["Juchubi"] = juchuhyouDataSet.JuchuhyouMain[intRow]["Juchubi"];
+                        dataRow["Juchubi"] = strDate(juchuhyouDataSet.JuchuhyouMain[intRow]["Juchubi"]);
                         dataRow["JuchuBango"] = stringReturn(juchuhyouDataSet.JuchuhyouMain[intRow]["JuchuBango"]);
                         dataRow["Hinban"] = stringReturn(juchuhyouDataSet.JuchuhyouMain[intRow]["Hinban"]);
                         dataRow["Suryo"] = stringReturn(juchuhyouDataSet.JuchuhyouMain[intRow]["Suryo"]);
-                        //dataRow["Nouki"] = juchuhyouDataSet.JuchuhyouMain[intRow]["Juchubi"];
-                        dataRow["Nouki"] = juchuhyouDataSet.JuchuhyouMain[intRow]["Juchubi"];
-                        dataRow["TokuisakiName"] = juchuhyouDataSet.JuchuhyouMain[intRow]["Tokuisakiname"];
+                        dataRow["Nouki"] = strDate(juchuhyouDataSet.JuchuhyouMain[intRow]["Nouki"]);
+                        dataRow["TokuisakiName"] = stringReturn(juchuhyouDataSet.JuchuhyouMain[intRow]["Tokuisakiname"]);
+                        dataRow["Hinmei"] = stringReturn(juchuhyouDataSet.JuchuhyouMain[intRow]["Hinmei"]);
+                        dataRow["Tanka"] = stringReturn(juchuhyouDataSet.JuchuhyouMain[intRow]["Tanka"]);
+                        dataRow["Kingaku"] = strKingaku(juchuhyouDataSet.JuchuhyouMain[intRow]["Suryo"], juchuhyouDataSet.JuchuhyouMain[intRow]["Tanka"]);
 
                         JuchuReport2.Rows.Add(dataRow);
 
@@ -145,6 +153,8 @@ namespace Juchuhyou_study
                 }
             }
         }
+
+
         /// <summary>
         /// データベースに接続
         /// </summary>
@@ -194,24 +204,50 @@ namespace Juchuhyou_study
         }
 
         /// <summary>
-        /// DateTime型を整形日付のみに変更しstring型で返す
+        /// ObjectからDatetimeに整形してStringで返す
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
-        private string strDate(DateTime value)
+        private string strDate(object value)
         {
-            string returnDate = "";
+            DateTime dateTime = DateTime.MinValue;
+            string returnStrDate = "";
+            string strTemp = "";
 
-            if (value == null)
-            {
-                return returnDate;
-            }
-            else
-            {
-                returnDate = value.ToString("yyyy/MM/dd");
-                return returnDate;
-            }
+            strTemp = stringReturn(value);
 
+            // yyyy/MM/ddに変換
+            if (strTemp.Length != 0)
+            {
+                if (DateTime.TryParse(strTemp, out dateTime) == true)
+                {
+                    returnStrDate = dateTime.ToString("yyyy/MM/dd");
+                }
+            }
+            return returnStrDate;
+        }
+
+        private string strKingaku(object objSuryo, object objTanka)
+        {
+            string kingaku = "";
+            string strSuryo = "";
+            string strTanka = "";
+            int intSuryo = 0;
+            int intTanka = 0;
+
+            strSuryo = stringReturn(objSuryo);
+            strTanka = stringReturn(objTanka);
+
+            if (int.TryParse(strSuryo, out intSuryo) == true && int.TryParse(strTanka, out intTanka) == true)
+            {
+                kingaku = stringReturn(intSuryo * intTanka);
+
+                if (kingaku == "0")
+                {
+                    kingaku = "";
+                }
+            }
+            return kingaku;
         }
     }
 }

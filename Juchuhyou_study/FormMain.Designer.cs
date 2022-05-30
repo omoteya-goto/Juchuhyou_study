@@ -58,6 +58,9 @@
             this.dataColumn8 = new System.Data.DataColumn();
             this.dataColumn9 = new System.Data.DataColumn();
             this.dataColumn10 = new System.Data.DataColumn();
+            this.dataColumn11 = new System.Data.DataColumn();
+            this.dataColumn12 = new System.Data.DataColumn();
+            this.dataColumn13 = new System.Data.DataColumn();
             this.flexReport = new C1.Win.FlexReport.C1FlexReport();
             this.tokuisakiName = new System.Windows.Forms.TextBox();
             this.juchuhyouTableAdapter = new Juchuhyou_study.JuchuhyouDataSetTableAdapters.JuchuhyouMainTableAdapter();
@@ -183,7 +186,10 @@
             this.dataColumn7,
             this.dataColumn8,
             this.dataColumn9,
-            this.dataColumn10});
+            this.dataColumn10,
+            this.dataColumn11,
+            this.dataColumn12,
+            this.dataColumn13});
             this.JuchuReport2.TableName = "JuchuReport2";
             // 
             // kaiPageGroup
@@ -230,6 +236,18 @@
             // 
             this.dataColumn10.ColumnName = "TokuisakiName";
             // 
+            // dataColumn11
+            // 
+            this.dataColumn11.ColumnName = "Hinmei";
+            // 
+            // dataColumn12
+            // 
+            this.dataColumn12.ColumnName = "Tanka";
+            // 
+            // dataColumn13
+            // 
+            this.dataColumn13.ColumnName = "Kingaku";
+            // 
             // flexReport
             // 
             this.flexReport.ReportDefinition = resources.GetString("flexReport.ReportDefinition");
@@ -255,7 +273,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(520, 143);
+            this.ClientSize = new System.Drawing.Size(520, 166);
             this.Controls.Add(this.tokuisakiName);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.label4);
@@ -307,6 +325,9 @@
         private System.Data.DataColumn dataColumn8;
         private System.Data.DataColumn dataColumn9;
         private System.Data.DataColumn dataColumn10;
+        private System.Data.DataColumn dataColumn11;
+        private System.Data.DataColumn dataColumn12;
+        private System.Data.DataColumn dataColumn13;
     }
 }
 
