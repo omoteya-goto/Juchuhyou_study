@@ -14,6 +14,7 @@ namespace Juchuhyou_study
     public partial class FormMain : Form
     {
         SqlConnection connection = null;
+        string strErrorMsg ="";
 
         public FormMain()
         {
@@ -30,124 +31,162 @@ namespace Juchuhyou_study
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void button2_Click(object sender, EventArgs e)
+        private void btKensaku_Click(object sender, EventArgs e)
         {
-            string strTokuisakiName = tokuisakiName.Text;
-
             //データベース接続
             if (dBConnect(ref connection) == true)
             {
+                Boolean flag = false;
                 //SQL文
                 string strSql = "SELECT * FROM JuchuhyouMain ";
 
-                if(strTokuisakiName != "")
+                if(tokuisakiName.Text != "")
                 {
-                    strSql = "where TokuisakiName = @tokuisakiName";
+                    strSql = strSql +"WHERE TokuisakiName = @tokuisakiName ";
+                    flag = true;
+                    
+                }
+
+                if(tbBegin.Text !="" || tbFin.Text != "")
+                {
+                    if(flag == false)
+                    {
+                        strSql = strSql + "WHERE ";
+                    }
+                    else
+                    {
+                        strSql = "AND ";
+                    }
+
+                    if(tbBegin.Text == "")
+                    {
+                        strErrorMsg = "開始日を入力してください";
+                    }
+                    if(tbFin.Text == "")
+                    {
+                        strErrorMsg = "終了日を入力してください";
+                    }
+
+                    strSql = strSql +"Nouki BETWEEN @noukiBegin AND @noukiFin ";
+                    flag = true;
+
                 }
 
                     strSql = strSql + "ORDER BY JuchuBango ASC";
 
-                try
-                {
-
-                    SqlCommand command = connection.CreateCommand();
-                    command.CommandText = @strSql;
-                    command.Parameters.Add(new SqlParameter("@tokuisakiName", strTokuisakiName));
-                    var adapter = new SqlDataAdapter(command);
-                    adapter.Fill(juchuhyouDataSet.JuchuhyouMain);
-
-
-                    /*
-                    SqlCommand command = connection.CreateCommand();
-                    command.CommandText = @strSql;
-                    command.Parameters.Add(new SqlParameter("@tokuisakiName", strTokuisakiName));
-                    var adapter = new SqlDataAdapter(command);
-                    adapter.Fill(JuchuReport);
-                    */
-
-                }
-                catch
-                {
-                    MessageBox.Show("データの取得に失敗しました。");
-                }
-                if (juchuhyouDataSet.JuchuhyouMain.Rows.Count == 0)
-                //if (JuchuReport.Rows.Count == 0)
-                {
-                    MessageBox.Show("印刷する情報がありません", "情報", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-
-                }
-                else if (juchuhyouDataSet.JuchuhyouMain.Rows.Count >= 1)
-                //else if (JuchuReport.Rows.Count >= 1)
-                {
-
-                    //データを格納
-                    int intRowCount = 0;
-                    int intRow = 0;
-                    DataRow dataRow = null;
-
-                    for (int i = 1; i <= juchuhyouDataSet.JuchuhyouMain.Rows.Count; i++)
+                if (strErrorMsg =="") {
+                    try
                     {
-                        // Windowsキューを実行
-                        if ((i % 15) == 0)
-                        {
-                            Application.DoEvents();
-                        }
 
-                        intRow = i - 1;
-                        intRowCount = intRowCount + 1;
+                        SqlCommand command = connection.CreateCommand();
+                        command.CommandText = @strSql;
+                        command.Parameters.Add(new SqlParameter("@tokuisakiName", tokuisakiName.Text));
+                        command.Parameters.Add(new SqlParameter("@noukiBegin", tbBegin.Text));
+                        command.Parameters.Add(new SqlParameter("@noukiFin", tbFin.Text));
+                        var adapter = new SqlDataAdapter(command);
+                        adapter.Fill(juchuhyouDataSet.JuchuhyouMain);
 
-                        //情報の代入
-                        dataRow = JuchuReport2.NewRow();
-                        dataRow["kaiPageGroup"] = stringReturn(juchuhyouDataSet.JuchuhyouMain[intRow]["TokuiCode"]) + "::" + stringReturn(juchuhyouDataSet.JuchuhyouMain[intRow]["NounyusakiCode"]);
-                        dataRow["GyoNo"] = intRowCount.ToString("##0");
-                        dataRow["TokuiCode"] = stringReturn(juchuhyouDataSet.JuchuhyouMain[intRow]["TokuiCode"]);
-                        dataRow["TokuiName"] = stringReturn(juchuhyouDataSet.JuchuhyouMain[intRow]["TokuisakiName"]);
-                        dataRow["NounyubasoCode"] = stringReturn(juchuhyouDataSet.JuchuhyouMain[intRow]["NounyusakiCode"]);
-                        dataRow["Juchubi"] = strDate(juchuhyouDataSet.JuchuhyouMain[intRow]["Juchubi"]);
-                        dataRow["JuchuBango"] = stringReturn(juchuhyouDataSet.JuchuhyouMain[intRow]["JuchuBango"]);
-                        dataRow["Hinban"] = stringReturn(juchuhyouDataSet.JuchuhyouMain[intRow]["Hinban"]);
-                        dataRow["Suryo"] = stringReturn(juchuhyouDataSet.JuchuhyouMain[intRow]["Suryo"]);
-                        dataRow["Nouki"] = strDate(juchuhyouDataSet.JuchuhyouMain[intRow]["Nouki"]);
-                        dataRow["TokuisakiName"] = stringReturn(juchuhyouDataSet.JuchuhyouMain[intRow]["Tokuisakiname"]);
-                        dataRow["Hinmei"] = stringReturn(juchuhyouDataSet.JuchuhyouMain[intRow]["Hinmei"]);
-                        dataRow["Tanka"] = stringReturn(juchuhyouDataSet.JuchuhyouMain[intRow]["Tanka"]);
-                        dataRow["Kingaku"] = strKingaku(juchuhyouDataSet.JuchuhyouMain[intRow]["Suryo"], juchuhyouDataSet.JuchuhyouMain[intRow]["Tanka"]);
 
-                        JuchuReport2.Rows.Add(dataRow);
+                        /*
+                        SqlCommand command = connection.CreateCommand();
+                        command.CommandText = @strSql;
+                        command.Parameters.Add(new SqlParameter("@tokuisakiName", strTokuisakiName));
+                        var adapter = new SqlDataAdapter(command);
+                        adapter.Fill(JuchuReport);
+                        */
 
                     }
-                    //プレビュー
-                    /*
-                    C1.Win.FlexReport.C1FlexReport frReport = new C1.Win.FlexReport.C1FlexReport();
-                    C1.Win.FlexViewer.C1FlexViewerDialog svDialog = new C1.Win.FlexViewer.C1FlexViewerDialog();
-                    flexReport.Save("juchuhyouDataSet");
-                    frReport.Load("juchuhyouDataSet", "Juchuhyo");
-                    frReport.DataSource.Recordset = null;
-                    frReport.DataSource.Recordset = juchuhyouDataSet.JuchuhyouMain;
-                    svDialog.DocumentSource = frReport;
-                    svDialog.Show();
-                    */
+                    catch
+                    {
+                        MessageBox.Show("データの取得に失敗しました。");
+                    }
 
-                    /*
-                    C1.Win.FlexReport.C1FlexReport frReport = new C1.Win.FlexReport.C1FlexReport();
-                    C1.Win.FlexViewer.C1FlexViewerDialog svDialog = new C1.Win.FlexViewer.C1FlexViewerDialog();
-                    flexReport.Save("juchuhyouDataSet");
-                    frReport.Load("juchuhyouDataSet", "Juchuhyo");
-                    frReport.DataSource.Recordset = null;
-                    frReport.DataSource.Recordset = JuchuReport;
-                    svDialog.DocumentSource = frReport;
-                    svDialog.Show();
-                    */
+                    if (juchuhyouDataSet.JuchuhyouMain.Rows.Count == 0)
+                    //if (JuchuReport.Rows.Count == 0)
+                    {
+                        MessageBox.Show("印刷する情報がありません", "情報", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
 
-                    C1.Win.FlexReport.C1FlexReport frReport = new C1.Win.FlexReport.C1FlexReport();
-                    C1.Win.FlexViewer.C1FlexViewerDialog svDialog = new C1.Win.FlexViewer.C1FlexViewerDialog();
-                    flexReport.Save("juchuhyouDataSet");
-                    frReport.Load("juchuhyouDataSet", "Juchuhyo");
-                    frReport.DataSource.Recordset = null;
-                    frReport.DataSource.Recordset = JuchuReport2;
-                    svDialog.DocumentSource = frReport;
-                    svDialog.Show();
+                    }
+                    else if (juchuhyouDataSet.JuchuhyouMain.Rows.Count >= 1)
+                    //else if (JuchuReport.Rows.Count >= 1)
+                    {
 
+                        //データを格納
+                        int intRowCount = 0;
+                        int intRow = 0;
+                        DataRow dataRow = null;
+
+                        for (int i = 1; i <= juchuhyouDataSet.JuchuhyouMain.Rows.Count; i++)
+                        {
+                            // Windowsキューを実行
+                            if ((i % 15) == 0)
+                            {
+                                Application.DoEvents();
+                            }
+
+                            intRow = i - 1;
+                            intRowCount = intRowCount + 1;
+
+                            //情報の代入
+                            dataRow = JuchuReport2.NewRow();
+                            dataRow["kaiPageGroup"] = stringReturn(juchuhyouDataSet.JuchuhyouMain[intRow]["TokuiCode"]) + "::" + stringReturn(juchuhyouDataSet.JuchuhyouMain[intRow]["NounyusakiCode"]);
+                            dataRow["GyoNo"] = intRowCount.ToString("##0");
+                            dataRow["TokuiCode"] = stringReturn(juchuhyouDataSet.JuchuhyouMain[intRow]["TokuiCode"]);
+                            dataRow["TokuiName"] = stringReturn(juchuhyouDataSet.JuchuhyouMain[intRow]["TokuisakiName"]);
+                            dataRow["NounyubasoCode"] = stringReturn(juchuhyouDataSet.JuchuhyouMain[intRow]["NounyusakiCode"]);
+                            dataRow["Juchubi"] = strDate(juchuhyouDataSet.JuchuhyouMain[intRow]["Juchubi"]);
+                            dataRow["JuchuBango"] = stringReturn(juchuhyouDataSet.JuchuhyouMain[intRow]["JuchuBango"]);
+                            dataRow["Hinban"] = stringReturn(juchuhyouDataSet.JuchuhyouMain[intRow]["Hinban"]);
+                            dataRow["Suryo"] = stringReturn(juchuhyouDataSet.JuchuhyouMain[intRow]["Suryo"]);
+                            dataRow["Nouki"] = strDate(juchuhyouDataSet.JuchuhyouMain[intRow]["Nouki"]);
+                            dataRow["TokuisakiName"] = stringReturn(juchuhyouDataSet.JuchuhyouMain[intRow]["Tokuisakiname"]);
+                            dataRow["Hinmei"] = stringReturn(juchuhyouDataSet.JuchuhyouMain[intRow]["Hinmei"]);
+                            dataRow["Tanka"] = stringReturn(juchuhyouDataSet.JuchuhyouMain[intRow]["Tanka"]);
+                            dataRow["Kingaku"] = strKingaku(juchuhyouDataSet.JuchuhyouMain[intRow]["Suryo"], juchuhyouDataSet.JuchuhyouMain[intRow]["Tanka"]);
+
+                            JuchuReport2.Rows.Add(dataRow);
+
+                        }
+                        //プレビュー
+                        /*
+                        C1.Win.FlexReport.C1FlexReport frReport = new C1.Win.FlexReport.C1FlexReport();
+                        C1.Win.FlexViewer.C1FlexViewerDialog svDialog = new C1.Win.FlexViewer.C1FlexViewerDialog();
+                        flexReport.Save("juchuhyouDataSet");
+                        frReport.Load("juchuhyouDataSet", "Juchuhyo");
+                        frReport.DataSource.Recordset = null;
+                        frReport.DataSource.Recordset = juchuhyouDataSet.JuchuhyouMain;
+                        svDialog.DocumentSource = frReport;
+                        svDialog.Show();
+                        */
+
+                        /*
+                        C1.Win.FlexReport.C1FlexReport frReport = new C1.Win.FlexReport.C1FlexReport();
+                        C1.Win.FlexViewer.C1FlexViewerDialog svDialog = new C1.Win.FlexViewer.C1FlexViewerDialog();
+                        flexReport.Save("juchuhyouDataSet");
+                        frReport.Load("juchuhyouDataSet", "Juchuhyo");
+                        frReport.DataSource.Recordset = null;
+                        frReport.DataSource.Recordset = JuchuReport;
+                        svDialog.DocumentSource = frReport;
+                        svDialog.Show();
+                        */
+
+                        C1.Win.FlexReport.C1FlexReport frReport = new C1.Win.FlexReport.C1FlexReport();
+                        C1.Win.FlexViewer.C1FlexViewerDialog svDialog = new C1.Win.FlexViewer.C1FlexViewerDialog();
+                        flexReport.Save("juchuhyouDataSet");
+                        frReport.Load("juchuhyouDataSet", "Juchuhyo");
+                        frReport.DataSource.Recordset = null;
+                        frReport.DataSource.Recordset = JuchuReport2;
+                        svDialog.DocumentSource = frReport;
+                        svDialog.Show();
+
+                        //テキストボックスを初期化
+                        resetTextbox();
+
+                    }
+                }
+                else
+                {
+                    MessageBox.Show(strErrorMsg, "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -246,6 +285,18 @@ namespace Juchuhyou_study
                 }
             }
             return kingaku;
+        }
+
+        private void btReset_Click(object sender, EventArgs e)
+        {
+            resetTextbox();
+        }
+
+        private void resetTextbox()
+        {
+            tokuisakiName.ResetText();
+            tbBegin.ResetText();
+            tbFin.ResetText();
         }
     }
 }

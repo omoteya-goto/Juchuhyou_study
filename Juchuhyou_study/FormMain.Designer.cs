@@ -31,7 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btKensaku = new System.Windows.Forms.Button();
             this.reportDataSet = new System.Data.DataSet();
             this.JuchuReport = new System.Data.DataTable();
             this.JuchuBango = new System.Data.DataColumn();
@@ -65,6 +65,11 @@
             this.tokuisakiName = new System.Windows.Forms.TextBox();
             this.juchuhyouTableAdapter = new Juchuhyou_study.JuchuhyouDataSetTableAdapters.JuchuhyouMainTableAdapter();
             this.juchuhyouDataSet = new Juchuhyou_study.JuchuhyouDataSet();
+            this.tbBegin = new System.Windows.Forms.TextBox();
+            this.tbFin = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.btReset = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.reportDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.JuchuReport)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.JuchuReport2)).BeginInit();
@@ -91,15 +96,16 @@
             this.label4.TabIndex = 3;
             this.label4.Text = "受注表の印刷";
             // 
-            // button2
+            // btKensaku
             // 
-            this.button2.Location = new System.Drawing.Point(432, 72);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 32);
-            this.button2.TabIndex = 14;
-            this.button2.Text = "検索";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.btKensaku.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.btKensaku.Location = new System.Drawing.Point(440, 128);
+            this.btKensaku.Name = "btKensaku";
+            this.btKensaku.Size = new System.Drawing.Size(75, 32);
+            this.btKensaku.TabIndex = 14;
+            this.btKensaku.Text = "検索";
+            this.btKensaku.UseVisualStyleBackColor = true;
+            this.btKensaku.Click += new System.EventHandler(this.btKensaku_Click);
             // 
             // reportDataSet
             // 
@@ -269,13 +275,63 @@
             this.juchuhyouDataSet.DataSetName = "JuchuhyouDataSet";
             this.juchuhyouDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
+            // tbBegin
+            // 
+            this.tbBegin.Location = new System.Drawing.Point(120, 120);
+            this.tbBegin.Name = "tbBegin";
+            this.tbBegin.Size = new System.Drawing.Size(100, 19);
+            this.tbBegin.TabIndex = 20;
+            // 
+            // tbFin
+            // 
+            this.tbFin.Location = new System.Drawing.Point(304, 120);
+            this.tbFin.Name = "tbFin";
+            this.tbFin.Size = new System.Drawing.Size(100, 19);
+            this.tbFin.TabIndex = 21;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Meiryo UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.label1.Location = new System.Drawing.Point(16, 120);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(48, 24);
+            this.label1.TabIndex = 22;
+            this.label1.Text = "納期";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Meiryo UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.label2.Location = new System.Drawing.Point(248, 120);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(29, 24);
+            this.label2.TabIndex = 23;
+            this.label2.Text = "～";
+            // 
+            // btReset
+            // 
+            this.btReset.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.btReset.Location = new System.Drawing.Point(440, 88);
+            this.btReset.Name = "btReset";
+            this.btReset.Size = new System.Drawing.Size(75, 32);
+            this.btReset.TabIndex = 24;
+            this.btReset.Text = "リセット";
+            this.btReset.UseVisualStyleBackColor = true;
+            this.btReset.Click += new System.EventHandler(this.btReset_Click);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(520, 166);
+            this.Controls.Add(this.btReset);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.tbFin);
+            this.Controls.Add(this.tbBegin);
             this.Controls.Add(this.tokuisakiName);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.btKensaku);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Name = "FormMain";
@@ -294,7 +350,7 @@
         #endregion
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btKensaku;
         private System.Data.DataSet reportDataSet;
         private C1.Win.FlexReport.C1FlexReport flexReport;
         private System.Windows.Forms.TextBox tokuisakiName;
@@ -328,6 +384,11 @@
         private System.Data.DataColumn dataColumn11;
         private System.Data.DataColumn dataColumn12;
         private System.Data.DataColumn dataColumn13;
+        private System.Windows.Forms.TextBox tbBegin;
+        private System.Windows.Forms.TextBox tbFin;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button btReset;
     }
 }
 
