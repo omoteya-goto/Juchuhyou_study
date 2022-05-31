@@ -64,12 +64,12 @@
             this.flexReport = new C1.Win.FlexReport.C1FlexReport();
             this.tokuisakiName = new System.Windows.Forms.TextBox();
             this.juchuhyouTableAdapter = new Juchuhyou_study.JuchuhyouDataSetTableAdapters.JuchuhyouMainTableAdapter();
-            this.juchuhyouDataSet = new Juchuhyou_study.JuchuhyouDataSet();
             this.tbBegin = new System.Windows.Forms.TextBox();
             this.tbFin = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.btReset = new System.Windows.Forms.Button();
+            this.juchuhyouDataSet = new Juchuhyou_study.JuchuhyouDataSet();
             ((System.ComponentModel.ISupportInitialize)(this.reportDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.JuchuReport)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.JuchuReport2)).BeginInit();
@@ -270,11 +270,6 @@
             // 
             this.juchuhyouTableAdapter.ClearBeforeFill = true;
             // 
-            // juchuhyouDataSet
-            // 
-            this.juchuhyouDataSet.DataSetName = "JuchuhyouDataSet";
-            this.juchuhyouDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
             // tbBegin
             // 
             this.tbBegin.Location = new System.Drawing.Point(120, 120);
@@ -319,6 +314,11 @@
             this.btReset.Text = "リセット";
             this.btReset.UseVisualStyleBackColor = true;
             this.btReset.Click += new System.EventHandler(this.btReset_Click);
+            // 
+            // juchuhyouDataSet
+            // 
+            this.juchuhyouDataSet.DataSetName = "JuchuhyouDataSet";
+            this.juchuhyouDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // FormMain
             // 
@@ -368,7 +368,6 @@
         private System.Data.DataColumn Syukkabi;
         private JuchuhyouDataSetTableAdapters.JuchuhyouMainTableAdapter juchuhyouTableAdapter;
         private System.Data.DataColumn GyoNo;
-        private JuchuhyouDataSet juchuhyouDataSet;
         private System.Data.DataTable JuchuReport2;
         private System.Data.DataColumn kaiPageGroup;
         private System.Data.DataColumn dataColumn1;
@@ -389,6 +388,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btReset;
+        private JuchuhyouDataSet juchuhyouDataSet;
     }
 }
 
